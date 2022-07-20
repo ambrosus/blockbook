@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/big"
-	"strconv"
 	"sync"
 	"time"
 
@@ -371,12 +370,7 @@ func (b *EthereumRPC) GetChainInfo() (*bchain.ChainInfo, error) {
 		Bestblockhash: h.Hash().Hex(),
 		Difficulty:    h.Difficulty.String(),
 		Version:       ver,
-	}
-	idi := int(id.Uint64())
-	if idi == 1 {
-		rv.Chain = "mainnet"
-	} else {
-		rv.Chain = "testnet " + strconv.Itoa(idi)
+		Chain:         b.Network,
 	}
 	return rv, nil
 }
