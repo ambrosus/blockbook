@@ -370,7 +370,7 @@ func (b *EthereumRPC) GetChainInfo() (*bchain.ChainInfo, error) {
 		Bestblockhash: h.Hash().Hex(),
 		Difficulty:    h.Difficulty.String(),
 		Version:       ver,
-		Chain:         b.Network,
+		Chain:         fmt.Sprintf("%s (%s)", b.Network, id),
 	}
 	return rv, nil
 }
